@@ -1,0 +1,158 @@
+Maior elemento do array
+ <?php
+        $maior = 0;
+
+        foreach ($data_json as $key => $value) {
+            if ($maior < $value) {
+                $maior = $value;
+            }
+        }
+
+        echo "maior -> $maior";
+        ?>
+
+Inverter Array
+<?php 
+        $array = [];
+
+        for ($i = count($data_json) - 1; $i > -1; $i--) {
+            array_push($array, $data_json[$i]);
+        }
+
+        echo implode(", ", $array);
+    ?>
+
+
+Inverter string
+<?php 
+        $array = [];
+        $string = "PNEUMONOULTRAMICROSCOPICSILICOVOLCANOCONIOSIS";
+
+        for ($i = strlen($string) - 1; $i > -1; $i--) {
+            echo $string[$i];
+        }
+    ?>
+
+Soma de linhas
+<?php
+    $maior = 0;
+    $soma = 0;
+
+    for ($l = 0; $l < count($data_json); $l++) {
+        for ($c = 0; $c < count($data_json[$l]); $c++) {
+            $soma += $data_json[$l][$c];
+        }
+
+        if ($maior < $soma) {
+            $maior = $soma;
+        }
+
+        $soma = 0;
+    }
+
+    echo $maior;
+    ?>
+
+Soma de dois números
+<?php
+    $array = [2, 5, 7, 10, 12, 17, 19, 39, 48, 49, 51, 55, 57, 58, 59, 66, 79, 81, 84, 89, 90, 92, 94, 95, 98];
+    $alvo = 50;
+
+    for ($l = 0; $l < count($array); $l++) {
+        for ($c = 0; $c < count($array); $c++) {
+            if ($array[$l] + $array[$c] == $alvo) {
+                echo "[" . $l . ", " . $c . "]";
+            }
+        }
+    }
+
+    ?>
+
+Elemento em maioria
+<?php
+        $array = [];
+        
+        foreach ($data_json as $key => $value) {
+            if (isset($array["$value"])) {
+                $array["$value"] += 1;
+            }
+            else {
+                $array["$value"] = 1;
+            }
+        }
+
+        $maior = 0;
+        $valorAtual = 0;
+
+        foreach ($array as $key => $value) {
+            if ($valorAtual < $value) {
+                $valorAtual = $value;
+                $maior = "$key : $value";
+            }
+        }
+
+        echo $maior;
+    ?>
+
+Valor que não se repete
+<?php
+    $array = [];
+
+    foreach ($data_json as $key => $value) {
+        if (isset($array["$value"])) {
+            $array["$value"] += 1;
+        } else {
+            $array["$value"] = 1;
+        }
+    }
+
+    foreach ($array as $key => $value) {
+        if ($value == 1) {
+            echo $key;
+        }
+    }
+    ?>
+
+
+Encontrar posição
+<?php
+    $array = [18, 59, 77, 86, 92, 102, 129, 208, 237, 244, 255, 260, 303, 309, 317, 331, 428, 433, 474, 510, 576, 615, 638, 665, 692, 700, 701, 708, 711, 719, 723, 725, 745, 776, 789, 803, 807, 814, 820, 827, 843, 884, 903, 913, 926, 936, 943, 958, 988, 996];
+
+    $alvo = 630;
+
+    foreach ($array as $key => $value) {
+        if ($alvo == $value) {
+            echo $key;
+        }
+    }
+
+    $stop = false;
+
+    for ($i = 0; $i < count($array); $i++) {
+        for ($j = 0; $j < count($array); $j++) {
+            if ($alvo > $array[$i] && $alvo < $array[$j]) {
+                echo $j;
+                $stop = true;
+                break;
+            }
+        }
+
+        if ($stop) {
+            break;
+        }
+    }
+    ?>
+
+
+Média dos elementos
+<?php
+    $array = [];
+    $total = 0;
+
+    for ($i = 0; $i < count($data_json); $i++) {
+        $total += $data_json[$i];
+    }
+    
+    
+    echo $total / count($data_json);
+    ?>
